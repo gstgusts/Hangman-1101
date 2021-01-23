@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Hangman {
@@ -84,7 +86,7 @@ public class Hangman {
         var index = getRandomNumber(0, wordCount);
         currentWord = words.get(index);
 
-        System.out.println(currentWord);
+        //System.out.println(currentWord);
 
         hiddenWord = "";
 
@@ -100,8 +102,21 @@ public class Hangman {
 
     private void loadWords() {
         words.clear();
-        words.add("cat");
-        words.add("DoG");
-        words.add("HOmE");
+
+        try {
+            File myObj = new File("C:\\Temp\\hangman.txt");
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                //System.out.println(data);
+                words.add(data);
+            }
+
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }

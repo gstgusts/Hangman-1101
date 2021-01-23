@@ -10,6 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            printHanging(hangman.getTryCounter());
             System.out.println(hangman.getHiddenWord());
             printUsedLetters(hangman.getUsedLetters());
             System.out.println("You have tries left: " + hangman.getTryCount());
@@ -50,5 +51,9 @@ public class Main {
         for (var usedLetter : chars) {
             System.out.println(usedLetter);
         }
+    }
+
+    public static void printHanging(int step) {
+        System.out.println(step);
     }
 }
